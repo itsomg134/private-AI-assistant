@@ -1,0 +1,24 @@
+#! agent_network-network-policy.yaml
+# Generated code, do not edit
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+    name: agent-network-network-policy
+    namespace: local-voice-ai-main
+spec:
+    podSelector:
+        matchLabels:
+            com.docker.compose.network.agent_network: "true"
+    policyTypes:
+        - Ingress
+        - Egress
+    ingress:
+        - from:
+            - podSelector:
+                matchLabels:
+                    com.docker.compose.network.agent_network: "true"
+    egress:
+        - to:
+            - podSelector:
+                matchLabels:
+                    com.docker.compose.network.agent_network: "true"

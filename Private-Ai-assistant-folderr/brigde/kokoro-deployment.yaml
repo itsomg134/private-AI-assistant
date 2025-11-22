@@ -1,0 +1,32 @@
+#! kokoro-deployment.yaml
+# Generated code, do not edit
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: kokoro
+    namespace: local-voice-ai-main
+    labels:
+        com.docker.compose.project: local-voice-ai-main
+        com.docker.compose.service: kokoro
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            com.docker.compose.project: local-voice-ai-main
+            com.docker.compose.service: kokoro
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                com.docker.compose.project: local-voice-ai-main
+                com.docker.compose.service: kokoro
+                com.docker.compose.network.agent_network: "true"
+        spec:
+            containers:
+                - name: kokoro
+                  image: ghcr.io/remsky/kokoro-fastapi-cpu:latest
+                  imagePullPolicy: IfNotPresent
+                  ports:
+                    - name: kokoro-8880
+                      containerPort: 8880

@@ -1,0 +1,39 @@
+#! ollama-deployment.yaml
+# Generated code, do not edit
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: ollama
+    namespace: local-voice-ai-main
+    labels:
+        com.docker.compose.project: local-voice-ai-main
+        com.docker.compose.service: ollama
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            com.docker.compose.project: local-voice-ai-main
+            com.docker.compose.service: ollama
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                com.docker.compose.project: local-voice-ai-main
+                com.docker.compose.service: ollama
+                com.docker.compose.network.agent_network: "true"
+        spec:
+            containers:
+                - name: ollama
+                  image: local-voice-ai-main-ollama
+                  imagePullPolicy: IfNotPresent
+                  ports:
+                    - name: ollama-11434
+                      containerPort: 11434
+                  volumeMounts:
+                    - name: root--ollama
+                      mountPath: /root/.ollama
+            volumes:
+                - name: root--ollama
+                  persistentVolumeClaim:
+                    claimName: ollama-ollama

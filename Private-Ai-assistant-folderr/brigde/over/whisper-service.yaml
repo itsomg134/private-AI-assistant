@@ -1,9 +1,0 @@
-#! whisper-service.yaml
-# Generated code, do not edit
-apiVersion: v1
-kind: Service
-metadata:
-    name: whisper-published
-    namespace: local-voice-ai-main
-spec:
-    type: LoadBalancer

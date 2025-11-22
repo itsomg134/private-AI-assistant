@@ -4,7 +4,11 @@
   <p>A full-stack, Dockerized AI voice assistant with speech, text, and voice synthesis powered by <a href="https://livekit.io?utm_source=demo">LiveKit</a>.</p>
 </div>
 
-[Demo Video](https://github.com/user-attachments/assets/67a76e94-aacb-4087-b09c-d4e46d8e695e)
+
+
+https://github.com/user-attachments/assets/b56f2515-6722-416c-9a50-16dc8112b021
+
+
 
 ## 🧩 Overview
 

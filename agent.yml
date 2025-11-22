@@ -1,0 +1,16 @@
+ai_agent:
+  name: "Local Voice Agent"
+  model: "llama3.1"
+  temperature: 0.7
+
+services:
+  whisper:
+    endpoint: "http://whisper:80"
+  kokoro:
+    endpoint: "http://kokoro:8880"
+  ollama:
+    endpoint: "http://ollama:11434"
+  livekit:
+    url: "ws://livekit:7880"
+    api_key: "devkey"
+    api_secret: "secret"

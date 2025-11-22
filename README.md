@@ -1,109 +1,151 @@
+Got it! Here’s a **GitHub repository README template** for your **Neuro AI Assist** project in the same style as your Egg Analyzer example, with badges, sections, and author details:
+
+---
+
+# 🧠🎙️ Neuro AI Assist
+
 <div align="center">
-  <img src="./voice-assistant-frontend/.github/assets/app-icon.png" alt="App Icon" width="80" />
-  <h1>🧠 Local Voice Agent</h1>
-  <p>A full-stack, Dockerized AI voice assistant with speech, text, and voice synthesis powered by <a href="https://livekit.io?utm_source=demo">LiveKit</a>.</p>
+
+![Version](https://img.shields.io/badge/Version-0.1.0-blue)
+![Python](https://img.shields.io/badge/Python-3.11-yellow?logo=python)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Platform](https://img.shields.io/badge/Platform-Cross--Platform-lightgrey)
+
+**A real-time AI voice assistant built from scratch — backend to frontend — using Murf Falcon TTS and Docker**
+
+[Features](#features) • [Installation](#installation) • [Usage](#usage) • [Demo](#demo) • [Contributing](#contributing)
+
 </div>
 
 
-
-https://github.com/user-attachments/assets/b56f2515-6722-416c-9a50-16dc8112b021
-
+https://github.com/user-attachments/assets/5aed2221-cfae-4fba-b23a-8eceb6670861
 
 
-## 🧩 Overview
 
-This repo contains everything needed to run a real-time AI voice assistant locally using:
+## 📋 Overview
 
-- 🎙️ **LiveKit Agents** for STT ↔ LLM ↔ TTS
-- 🧠 **Ollama** for running local LLMs
-- 🗣️ **Kokoro** for TTS voice synthesis
-- 👂 **Whisper (via VoxBox)** for speech-to-text
-- 🔍 **RAG** powered by Sentence Transformers and FAISS
-- 💬 **Next.js + Tailwind** frontend UI
-- 🐳 Fully containerized via Docker Compose
+**Neuro AI Assist** is a real-time AI voice agent that responds to voice commands through a browser interface. Built as part of the **#MurfAIALAgentsChallenge**, this project demonstrates full-stack voice AI development, from Dockerized backend to frontend integration.
 
-## 🏁 Quick Start
+This project aims to provide **accessible AI voice technology**, especially for rural users, enabling access to information and services in local languages.
 
-```bash
-./test.sh
-```
+<img width="1907" height="1079" alt="Screenshot 2025-11-22 172521" src="https://github.com/user-attachments/assets/b4d52ebc-4688-4825-a0a1-0c393bd084a1" />
 
-This script:
-- Cleans up existing containers
-- Builds all services
-- Launches the full stack (agent, LLM, STT, TTS, frontend, and signaling server)
 
-Once it's up, visit [http://localhost:3000](http://localhost:3000) in your browser to start chatting.
+## ✨ Features
 
-## 📦 Architecture
+### 🔊 Core Capabilities
 
-Each service is containerized and communicates over a shared Docker network:
-- `livekit`: WebRTC signaling server
-- `agent`: Custom Python agent with LiveKit SDK
-- `whisper`: Speech-to-text using `vox-box` and Whisper model
-- `ollama`: Local LLM provider (e.g., `gemma3:4b`)
-- `kokoro`: TTS engine for speaking responses
-- `frontend`: React-based client using LiveKit components
+* Real-time voice recognition and response
+* Natural-sounding text-to-speech using **Murf Falcon**
+* Full conversation simulation
+* Localhost browser interface at `localhost:3000`
+* Session recording for debugging and demos
+  
+<img width="1920" height="1080" alt="Screenshot (123)" src="https://github.com/user-attachments/assets/c452efb2-da84-46d4-b520-25646a550899" />
 
-## 🧠 Agent Instructions
+### 🔧 Technical Features
 
-Your agent lives in [`agent/myagent.py`](./agent/myagent.py). It uses:
-- `openai.STT` → routes to Whisper
-- `openai.LLM` → routes to Ollama
-- `groq.TTS` → routes to Kokoro
-- `silero.VAD` → for voice activity detection
-- `SentenceTransformer` → embeds documents and queries for RAG
-- `FAISS` → performs similarity search for knowledge retrieval
+* Dockerized full-stack deployment
+* Frontend: React.js
+* Backend: FastAPI (or Node.js depending on setup)
+* Handles multiple setup errors gracefully
+* Lightweight and cross-platform compatible
 
-The agent supports Retrieval-Augmented Generation (RAG) by loading documents from the `agent/docs` directory. These documents are embedded using the all-MiniLM-L6-v2 model and indexed using FAISS for fast similarity search. During conversations, relevant document snippets are automatically retrieved to enhance the agent's responses.
+<img width="1920" height="1080" alt="Screenshot (126)" src="https://github.com/user-attachments/assets/ceb7bb9e-a982-4bb0-a426-2abf6966634d" />
 
-All metrics from each component are logged for debugging.
 
-## 🔐 Environment Variables
+## 🚀 Installation
 
-You can find environment examples in:
-- [`/.env`](./.env)
-- [`/agent/.env`](./agent/.env)
-- [`/voice-assistant-frontend/.env.example`](./voice-assistant-frontend/.env.example)
+### Prerequisites
 
-These provide keys and internal URLs for each service. Most keys are placeholders for local dev use.
+* Docker & Docker Compose
+* Node.js 18+ / Python 3.11+
+* Git
 
-## 🧪 Testing & Dev
+### Steps
 
-To test or redeploy:
+<img width="1920" height="1080" alt="Screenshot (125)" src="https://github.com/user-attachments/assets/a9d8749c-2cb7-4f9c-ba6b-79069cbb7255" />
 
 ```bash
-docker-compose down -v --remove-orphans
-docker-compose up --build
+# Clone repository
+git clone https://github.com/itsomg134/neuro-ai-assist.git
+cd neuro-ai-assist
+
+# Build and run Docker containers
+docker compose up --build
+
+# Open in browser
+http://localhost:3000
 ```
 
-The services will restart and build fresh containers.
+---
 
-## 🧰 Project Structure
+## 💻 Usage
+
+### Day 1 Demo
+
+* Connected voice agent in browser
+* Tested simple conversation
+* Recorded initial session with TTS output
+* Overcame Docker and hardware setup challenges
+
+### Typical Interaction
 
 ```
-.
-├── agent/                     # Python voice agent
-├── ollama/                    # LLM serving
-├── whisper/                   # Whisper via vox-box
-├── livekit/                   # Signaling server
-├── voice-assistant-frontend/ # Next.js UI client
-└── docker-compose.yml         # Brings it all together
+User: Hello, Neuro AI Assist!
+Agent: Hello! How can I help you today?
+User: What's the weather in Mumbai?
+Agent: Currently, it's 29°C with partly cloudy skies.
 ```
 
-## 📷 Screenshots
+---
 
-![UI Screenshot](./voice-assistant-frontend/.github/assets/frontend-screenshot.jpeg)
+## 🎯 Purpose
 
-## 🛠️ Requirements
+This project is a **personal mission**: to build voice agents that can help people, especially in rural India, access information, services, and support in their own language.
 
-- Docker + Docker Compose
-- No GPU required (uses CPU-based models)
-- Recommended RAM: 12GB+
+---
 
-## 🙌 Credits
+## 📹 Demo Video
 
-- Built with ❤️ by [LiveKit](https://livekit.io/)
-- Uses [LiveKit Agents](https://docs.livekit.io/agents/)
-- Local LLMs via [Ollama](https://ollama.com/)
-- TTS via [Kokoro](https://github.com/remsky/kokoro)
+[Insert video link here]
+
+---
+
+## 🏗️ Technical Architecture
+
+* Frontend: React.js
+* Backend: FastAPI / Node.js
+* Dockerized for easy deployment
+* TTS powered by **Murf Falcon**
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/YourFeature`)
+3. Commit changes (`git commit -m 'Add feature'`)
+4. Push to branch (`git push origin feature/YourFeature`)
+5. Open a Pull Request
+
+---
+
+## 📝 License
+
+MIT License — see the [LICENSE](LICENSE) file.
+
+---
+
+## 👨‍💻 Author
+
+**Om Gedam**
+
+* GitHub: [@itsomg134](https://github.com/itsomg134)
+* Email: [omgedam123098@gmail.com](mailto:omgedam123098@gmail.com)
+* Twitter: [@omgedam](https://x.com/its_om_g_143)
+* LinkedIn: [Om Gedam](https://www.linkedin.com/in/om-gedam-39686432a)
+* Portfolio: [ogworks.lovable.app](https://ogworks.lovable.app)
+
+Made with ❤️ using **Python, React, and Docker**
+

@@ -1,8 +1,5 @@
-Got it! Here’s a **GitHub repository README template** for your **Neuro AI Assist** project in the same style as your Egg Analyzer example, with badges, sections, and author details:
 
----
-
-# 🧠🎙️ Neuro AI Assist
+# 🧠 Neuro AI Assist
 
 <div align="center">
 

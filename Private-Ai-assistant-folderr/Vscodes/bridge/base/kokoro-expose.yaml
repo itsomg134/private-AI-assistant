@@ -1,0 +1,18 @@
+#! kokoro-expose.yaml
+# Generated code, do not edit
+apiVersion: v1
+kind: Service
+metadata:
+    name: kokoro
+    namespace: local-voice-ai-main
+    labels:
+        com.docker.compose.project: local-voice-ai-main
+        com.docker.compose.service: kokoro
+spec:
+    selector:
+        com.docker.compose.project: local-voice-ai-main
+        com.docker.compose.service: kokoro
+    ports:
+        - name: kokoro-8880
+          port: 8880
+          targetPort: kokoro-8880

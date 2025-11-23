@@ -105,7 +105,7 @@ This project is a **personal mission**: to build voice agents that can help peop
 
 ## 📹 Demo Video
 
-[Insert video link here]
+https://drive.google.com/file/d/1Pr_5vPJ2ujUc96Uwd9JGI849EvYMT-Pw/view?usp=drive_link
 
 ---
 

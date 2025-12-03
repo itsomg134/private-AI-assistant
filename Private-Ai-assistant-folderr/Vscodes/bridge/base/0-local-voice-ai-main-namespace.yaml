@@ -1,8 +1,0 @@
-#! 0-local-voice-ai-main-namespace.yaml
-# Generated code, do not edit
-apiVersion: v1
-kind: Namespace
-metadata:
-    name: local-voice-ai-main
-    labels:
-        com.docker.compose.project: local-voice-ai-main
